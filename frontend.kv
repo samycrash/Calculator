@@ -1,15 +1,52 @@
-<calculatorScreen>:
+<DisplayScreen>:
     GridLayout:
         cols: 1
-        padding: 10
-        spacing: 5
         TextInput:
             id: result_box 
-        Button:
-            id: btn_1     
-
+        GridLayout:
+            cols:4
+            Button:
+                text: 'AC'
+            Button:
+                text: '<-'
+            Button:
+                text: '+/-'
+            Button:
+                text: '/'
+            Button:
+                text: '7'
+            Button:
+                text: '8'
+            Button:
+                text: '9'
+            Button:
+                text: 'x'
+            Button:
+                text: '4'
+            Button:
+                text: '5'
+            Button:
+                text: '6'
+            Button:
+                text: '-'
+            Button:
+                text: '1'
+            Button:
+                text: '2'
+            Button:
+                text: '3'
+            Button:
+                text: '+'
+            Button:
+                text: '%'
+            Button:
+                text: '0'
+            Button:
+                text: ','
+            Button:
+                text: '='
 <RootWidget>:
-    calculatorScreen:
+    DisplayScreen:
         id: first_screen
         name: 'first_screen'
 
