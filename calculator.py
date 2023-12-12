@@ -9,6 +9,48 @@ class DisplayScreen(Screen):
     
     def multiply(self):
         pass
+    
+    def dividing(self):
+        pass
+
+    def plus(self):
+        pass
+
+    def minus(self):
+        pass
+
+    def btn_1(self):
+        self.ids.result_box.text += '1'
+    
+    def btn_2(self):
+        self.ids.result_box.text += '2'
+    
+    def btn_3(self):
+        self.ids.result_box.text += '3'
+    
+    def btn_4(self):
+        self.ids.result_box.text += '4'
+    
+    def btn_5(self):
+        self.ids.result_box.text += '5'
+    
+    def btn_6(self):
+        self.ids.result_box.text += '6'
+    
+    def btn_7(self):
+        self.ids.result_box.text += '7'
+    
+    def btn_8(self):
+        self.ids.result_box.text += '8'
+    
+    def btn_9(self):
+        self.ids.result_box.text += '9'
+    
+    def btn_0(self):
+        if self.ids.result_box.text :
+            self.ids.result_box.text += '0'
+    
+ 
 
 class RootWidget(ScreenManager):
     pass
