@@ -71,6 +71,10 @@ class DisplayScreen(Screen):
         else:
             text_now = '0' + '.' + text_now
             self.ids.result_box.text = text_now
+    
+    def btn_AC(self):
+        self.ids.result_box.text = ''
+        
         
     
 class RootWidget(ScreenManager):
