@@ -20,48 +20,88 @@ class DisplayScreen(Screen):
         pass
 
     def btn_1(self):
-        self.ids.result_box.text += '1'
+        text_now = self.ids.result_box.text
+        if text_now != '0':
+            self.ids.result_box.text += '1'
+        else:
+            self.ids.result_box.text = '1'
     
     def btn_2(self):
-        self.ids.result_box.text += '2'
+        text_now = self.ids.result_box.text
+        if text_now != '0':
+            self.ids.result_box.text += '2'
+        else:
+            self.ids.result_box.text = '2'
     
     def btn_3(self):
-        self.ids.result_box.text += '3'
+        text_now = self.ids.result_box.text
+        if text_now != '0':
+            self.ids.result_box.text += '3'
+        else:
+            self.ids.result_box.text = '3'
     
     def btn_4(self):
-        self.ids.result_box.text += '4'
+        text_now = self.ids.result_box.text
+        if text_now != '0':
+            self.ids.result_box.text += '4'
+        else:
+            self.ids.result_box.text = '4'
     
     def btn_5(self):
-        self.ids.result_box.text += '5'
+        text_now = self.ids.result_box.text
+        if text_now != '0':            
+            self.ids.result_box.text += '5'
+        else:
+            self.ids.result_box.text = '5'
     
     def btn_6(self):
-        self.ids.result_box.text += '6'
+        text_now = self.ids.result_box.text
+        if text_now != '0':            
+            self.ids.result_box.text += '6'
+        else:
+            self.ids.result_box.text = '6'
     
     def btn_7(self):
-        self.ids.result_box.text += '7'
+        text_now = self.ids.result_box.text
+        if text_now != '0':            
+            self.ids.result_box.text += '7'
+        else:
+            self.ids.result_box.text = '7'
     
     def btn_8(self):
-        self.ids.result_box.text += '8'
+        text_now = self.ids.result_box.text
+        if text_now != '0':
+            self.ids.result_box.text += '8'
+        else:
+            self.ids.result_box.text = '8'
     
     def btn_9(self):
-        self.ids.result_box.text += '9'
-    
+        text_now = self.ids.result_box.text
+        if text_now != '0':
+            self.ids.result_box.text += '9'
+        else:
+            self.ids.result_box.text = '9'
+
     def btn_0(self):
-        if self.ids.result_box.text :
+        text_now = self.ids.result_box.text 
+        if len(text_now)>1:            
             self.ids.result_box.text += '0'
     
     def btn_backSpace(self):
         self.ids.result_box.do_backspace(from_undo=False, mode= 'bkspc')
+        if not self.ids.result_box.text:
+            self.ids.result_box.text = '0'
         
     def btn_symbolic(self):        
         text_now = self.ids.result_box.text        
-        if not '-' in text_now:
-            symbol = '-'            
-            text_now = symbol + text_now
-            self.ids.result_box.text = text_now
-        else:
-            text_ = text_now[1:]
-            self.ids.result_box.text = text_
+        if text_now:
+            if not '-' in text_now:
+                symbol = '-'            
+                text_now = symbol + text_now
+                self.ids.result_box.text = text_now
+            else:
+                text_ = text_now[1:]
+                self.ids.result_box.text = text_
     
     def btn_comma(self):
         text_now = self.ids.result_box.text
@@ -73,7 +113,7 @@ class DisplayScreen(Screen):
             self.ids.result_box.text = text_now
     
     def btn_AC(self):
-        self.ids.result_box.text = ''
+        self.ids.result_box.text = '0'
         
         
     
