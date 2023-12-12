@@ -6,7 +6,7 @@ from kivy.lang import Builder
 Builder.load_file("frontend.kv")
 
 class DisplayScreen(Screen):
-    
+        
     def multiply(self):
         pass
     
@@ -50,8 +50,19 @@ class DisplayScreen(Screen):
         if self.ids.result_box.text :
             self.ids.result_box.text += '0'
     
- 
-
+    def btn_backSpace(self):
+        self.ids.result_box.do_backspace(from_undo=False, mode= 'bkspc')
+        
+    def btn_symbolic(self):        
+        text_now = self.ids.result_box.text        
+        if not '-' in text_now:
+            symbol = '-'            
+            text_now = symbol + text_now
+            self.ids.result_box.text = text_now
+        else:
+            text_ = text_now[1:]
+            self.ids.result_box.text = text_
+    
 class RootWidget(ScreenManager):
     pass
 
