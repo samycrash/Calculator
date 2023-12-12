@@ -63,6 +63,16 @@ class DisplayScreen(Screen):
             text_ = text_now[1:]
             self.ids.result_box.text = text_
     
+    def btn_comma(self):
+        text_now = self.ids.result_box.text
+        if text_now:
+            if not '.' in text_now:
+                self.ids.result_box.text += '.'
+        else:
+            text_now = '0' + '.' + text_now
+            self.ids.result_box.text = text_now
+        
+    
 class RootWidget(ScreenManager):
     pass
 
