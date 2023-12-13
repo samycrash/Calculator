@@ -13,26 +13,34 @@ class DisplayScreen(Screen):
         self.current_value =0
         self.result = 0
         self.display_number = ''
+        self.last_value = 0
         self.cycle = 0
 
-    def final_result(self):
+    def final_result(self):        
+        value = self.ids.result_box.text
+        if not value:
+            value = self.last_value
         if self.process == 1:
-            self.result = self.current_value * float(self.ids.result_box.text)
+            self.result = self.current_value * float(value)
         elif self.process == 2:
-            self.result = self.current_value / float(self.ids.result_box.text)
+            self.result = self.current_value / float(value)
         elif self.process == 3:
-            self.result = self.current_value + float(self.ids.result_box.text)
+            self.result = self.current_value + float(value)
         elif self.process == 4:
-            self.result = self.current_value - float(self.ids.result_box.text)
+            self.result = self.current_value - float(value)
         
         self.display_number = str(self.result)
         self.ids.result_box.hint_text = self.display_number
+        self.current_value = float(self.display_number)
+        self.last_value = value        
         self.ids.result_box.text = ''
         self.cycle =0
+        
 
     def multiply(self):
         if self.cycle:
-            self.final_result()
+            if self.ids.result_box.text:
+                self.final_result()
         self.process = 1
         if not self.display_number:
             self.display_number = self.ids.result_box.text
@@ -43,7 +51,8 @@ class DisplayScreen(Screen):
             
     def dividing(self):
         if self.cycle:
-            self.final_result()
+            if self.ids.result_box.text:
+                self.final_result()
         self.process = 2
         if not self.display_number:
             self.display_number = self.ids.result_box.text
@@ -55,7 +64,8 @@ class DisplayScreen(Screen):
 
     def plus(self):
         if self.cycle:
-            self.final_result()
+            if self.ids.result_box.text:
+                self.final_result()
         self.process = 3
         if not self.display_number:
             self.display_number = self.ids.result_box.text
@@ -66,7 +76,8 @@ class DisplayScreen(Screen):
 
     def minus(self):
         if self.cycle:
-            self.final_result()
+            if self.ids.result_box.text:
+                self.final_result()
         self.process = 4
         if not self.display_number:
             self.display_number = self.ids.result_box.text
