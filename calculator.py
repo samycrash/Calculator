@@ -13,6 +13,7 @@ class DisplayScreen(Screen):
         self.current_value =0
         self.result = 0
         self.display_number = ''
+        self.cycle = 0
 
     def final_result(self):
         if self.process == 1:
@@ -24,36 +25,55 @@ class DisplayScreen(Screen):
         elif self.process == 4:
             self.result = self.current_value - float(self.ids.result_box.text)
         
-        self.ids.result_box.text = str(self.result)
+        self.display_number = str(self.result)
+        self.ids.result_box.hint_text = self.display_number
+        self.ids.result_box.text = ''
+        self.cycle =0
 
     def multiply(self):
+        if self.cycle:
+            self.final_result()
         self.process = 1
-        self.display_number = self.ids.result_box.text
+        if not self.display_number:
+            self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
+        self.cycle =1
             
     def dividing(self):
+        if self.cycle:
+            self.final_result()
         self.process = 2
-        self.display_number = self.ids.result_box.text
+        if not self.display_number:
+            self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
+        self.cycle =1
 
 
     def plus(self):
+        if self.cycle:
+            self.final_result()
         self.process = 3
-        self.display_number = self.ids.result_box.text
+        if not self.display_number:
+            self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
+        self.cycle =1
 
     def minus(self):
+        if self.cycle:
+            self.final_result()
         self.process = 4
-        self.display_number = self.ids.result_box.text
+        if not self.display_number:
+            self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
+        self.cycle =1
 
     def btn_1(self):
         text_now = self.ids.result_box.text
@@ -126,7 +146,8 @@ class DisplayScreen(Screen):
     def btn_backSpace(self):
         self.ids.result_box.do_backspace(from_undo=False, mode= 'bkspc')
         if not self.ids.result_box.text:
-            self.ids.result_box.text = '0'
+            if not self.display_number:
+                self.ids.result_box.text = '0'
         
     def btn_symbolic(self):        
         text_now = self.ids.result_box.text        
@@ -150,6 +171,8 @@ class DisplayScreen(Screen):
     
     def btn_AC(self):
         self.ids.result_box.text = '0'
+        self.display_number =''
+        self.cycle =0
         
         
     
