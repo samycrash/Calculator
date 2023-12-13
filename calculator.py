@@ -21,19 +21,31 @@ class DisplayScreen(Screen):
         if not value:
             value = self.last_value
         if self.process == 1:
-            self.result = self.current_value * float(value)
+            if not '%' in value:                
+                self.result = self.current_value * float(value)
+            else:
+                self.result = self.current_value * (float(value[:-1]) / 100)
         elif self.process == 2:
-            self.result = self.current_value / float(value)
+            if not '%' in value:
+                self.result = self.current_value / float(value)
+            else:
+                self.result = self.current_value / (float(value[:-1]) /100)
         elif self.process == 3:
-            self.result = self.current_value + float(value)
+            if not '%' in value:
+                self.result = self.current_value + float(value)
+            else:
+                self.result = self.current_value + (float(value[:-1]) / 100 * self.current_value)
         elif self.process == 4:
-            self.result = self.current_value - float(value)
+            if not '%' in value:
+                self.result = self.current_value - float(value)
+            else:
+                self.result = self.current_value - (float(value[:-1] ) /100 * self.current_value)
         
         self.display_number = str(self.result)
         self.ids.result_box.hint_text = self.display_number
         self.current_value = float(self.display_number)
         self.last_value = value        
-        self.ids.result_box.text = ''
+        self.ids.result_box.text = ''        
         self.cycle =0
         
 
@@ -43,6 +55,8 @@ class DisplayScreen(Screen):
                 self.final_result()
         self.process = 1
         if not self.display_number:
+            self.display_number = self.ids.result_box.text
+        elif self.ids.result_box.text:
             self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
@@ -55,6 +69,8 @@ class DisplayScreen(Screen):
                 self.final_result()
         self.process = 2
         if not self.display_number:
+            self.display_number = self.ids.result_box.text
+        elif self.ids.result_box.text:
             self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
@@ -69,6 +85,8 @@ class DisplayScreen(Screen):
         self.process = 3
         if not self.display_number:
             self.display_number = self.ids.result_box.text
+        elif self.ids.result_box.text:
+            self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
@@ -80,6 +98,8 @@ class DisplayScreen(Screen):
                 self.final_result()
         self.process = 4
         if not self.display_number:
+            self.display_number = self.ids.result_box.text
+        elif self.ids.result_box.text:
             self.display_number = self.ids.result_box.text
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
@@ -180,6 +200,12 @@ class DisplayScreen(Screen):
             text_now = '0' + '.' + text_now
             self.ids.result_box.text = text_now
     
+    def btn_percent(self):
+        text_now = self.ids.result_box.text
+        if text_now != 0:
+            if not '%' in text_now:
+                self.ids.result_box.text += '%'
+
     def btn_AC(self):
         self.ids.result_box.text = '0'
         self.display_number =''
