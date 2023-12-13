@@ -22,6 +22,7 @@
             Button:
                 id: dividing_btn
                 text: '/'
+                on_release: root.dividing()
             Button:
                 id: 7_btn
                 text: '7'
@@ -37,6 +38,7 @@
             Button:
                 id: multiply_btn
                 text: 'x'
+                on_release: root.multiply()
             Button:
                 id: 4_btn
                 text: '4'
@@ -52,6 +54,7 @@
             Button:
                 id: minus_btn
                 text: '-'
+                on_release: root.minus()
             Button:
                 id: 1_btn
                 text: '1'
@@ -67,6 +70,7 @@
             Button:
                 id: plus_btn
                 text: '+'
+                on_release: root.plus()  
             Button:
                 id: percent_btn
                 text: '%'
@@ -81,6 +85,7 @@
             Button:
                 id: result_btn
                 text: '='
+                on_release : root.final_result()
 <RootWidget>:
     DisplayScreen:
         id: first_screen

@@ -5,19 +5,55 @@ from kivy.lang import Builder
 
 Builder.load_file("frontend.kv")
 
-class DisplayScreen(Screen):
+class DisplayScreen(Screen):    
+
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.process = 0
+        self.current_value =0
+        self.result = 0
+        self.display_number = ''
+
+    def final_result(self):
+        if self.process == 1:
+            self.result = self.current_value * float(self.ids.result_box.text)
+        elif self.process == 2:
+            self.result = self.current_value / float(self.ids.result_box.text)
+        elif self.process == 3:
+            self.result = self.current_value + float(self.ids.result_box.text)
+        elif self.process == 4:
+            self.result = self.current_value - float(self.ids.result_box.text)
         
+        self.ids.result_box.text = str(self.result)
+
     def multiply(self):
-        pass
-    
+        self.process = 1
+        self.display_number = self.ids.result_box.text
+        self.current_value = float(self.display_number)
+        self.ids.result_box.text = ''
+        self.ids.result_box.hint_text = self.display_number
+            
     def dividing(self):
-        pass
+        self.process = 2
+        self.display_number = self.ids.result_box.text
+        self.current_value = float(self.display_number)
+        self.ids.result_box.text = ''
+        self.ids.result_box.hint_text = self.display_number
+
 
     def plus(self):
-        pass
+        self.process = 3
+        self.display_number = self.ids.result_box.text
+        self.current_value = float(self.display_number)
+        self.ids.result_box.text = ''
+        self.ids.result_box.hint_text = self.display_number
 
     def minus(self):
-        pass
+        self.process = 4
+        self.display_number = self.ids.result_box.text
+        self.current_value = float(self.display_number)
+        self.ids.result_box.text = ''
+        self.ids.result_box.hint_text = self.display_number
 
     def btn_1(self):
         text_now = self.ids.result_box.text
@@ -84,7 +120,7 @@ class DisplayScreen(Screen):
 
     def btn_0(self):
         text_now = self.ids.result_box.text 
-        if len(text_now)>1:            
+        if text_now != '0':            
             self.ids.result_box.text += '0'
     
     def btn_backSpace(self):
