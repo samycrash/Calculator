@@ -176,9 +176,9 @@ class DisplayScreen(Screen):
     
     def btn_backSpace(self):
         self.ids.result_box.do_backspace(from_undo=False, mode= 'bkspc')
-        if not self.ids.result_box.text:
-            if not self.display_number:
-                self.ids.result_box.text = '0'
+        if not self.ids.result_box.text:            
+            self.ids.result_box.text = '0'
+            
         
     def btn_symbolic(self):        
         text_now = self.ids.result_box.text        
