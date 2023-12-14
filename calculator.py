@@ -60,6 +60,9 @@ class DisplayScreen(Screen):
             self.display_number = self.ids.result_box.text
         elif self.ids.result_box.text:
             self.display_number = self.ids.result_box.text
+
+        if '%' in self.display_number:
+            self.display_number = '0'
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
@@ -74,6 +77,9 @@ class DisplayScreen(Screen):
             self.display_number = self.ids.result_box.text
         elif self.ids.result_box.text:
             self.display_number = self.ids.result_box.text
+        
+        if '%' in self.display_number:
+            self.display_number = '0'
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
@@ -89,6 +95,9 @@ class DisplayScreen(Screen):
             self.display_number = self.ids.result_box.text
         elif self.ids.result_box.text:
             self.display_number = self.ids.result_box.text
+        
+        if '%' in self.display_number:
+            self.display_number = '0'
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
@@ -103,6 +112,9 @@ class DisplayScreen(Screen):
             self.display_number = self.ids.result_box.text
         elif self.ids.result_box.text:
             self.display_number = self.ids.result_box.text
+        
+        if '%' in self.display_number:
+            self.display_number = '0'
         self.current_value = float(self.display_number)
         self.ids.result_box.text = ''
         self.ids.result_box.hint_text = self.display_number
