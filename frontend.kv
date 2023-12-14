@@ -1,92 +1,200 @@
 <DisplayScreen>:
     GridLayout:
         cols: 1
+        spacing: 10        
         TextInput:
             id: result_box 
-            font_size: 20  
-            text: '0'      
+            font_size: 45
+            foreground_color: [0,0,0,1]  
+            hint_text_color : [0,0,0,1]  
+            text: '0' 
+            size_hint_y : 0.2                 
         GridLayout:
+            size_hint_y: 0.8
             cols:4
+            spacing : 15            
             Button:
                 id: AC_btn
                 text: 'AC'
-                on_release: root.btn_AC()
+                font_size: 28
+                background_normal: ''
+                background_color: [136/255 , 8/255, 8/255, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_AC()
+                    self.background_color = [136/255 , 8/255, 8/255, 1]
             Button:
                 id: bck_spce_btn
                 text: '<-'
-                on_release: root.btn_backSpace()
-            Button:
-                id: symbolic_btn
-                text: '+/-'
-                on_release: root.btn_symbolic()
-            Button:
-                id: dividing_btn
-                text: '/'
-                on_release: root.dividing()
-            Button:
-                id: 7_btn
-                text: '7'
-                on_release: root.btn_7()
-            Button:
-                id: 8_btn
-                text: '8'
-                on_release: root.btn_8()
-            Button:
-                id: 9_btn
-                text: '9'
-                on_release: root.btn_9()
-            Button:
-                id: multiply_btn
-                text: 'x'
-                on_release: root.multiply()
-            Button:
-                id: 4_btn
-                text: '4'
-                on_release: root.btn_4()
-            Button:
-                id: 5_btn
-                text: '5'
-                on_release: root.btn_5()
-            Button:
-                id: 6_btn
-                text: '6'
-                on_release: root.btn_6()
-            Button:
-                id: minus_btn
-                text: '-'
-                on_release: root.minus()
-            Button:
-                id: 1_btn
-                text: '1'
-                on_release: root.btn_1()
-            Button:
-                id: 2_btn
-                text: '2'
-                on_release: root.btn_2()
-            Button:
-                id: 3_btn
-                text: '3'
-                on_release: root.btn_3()
-            Button:
-                id: plus_btn
-                text: '+'
-                on_release: root.plus()  
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_backSpace()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
             Button:
                 id: percent_btn
                 text: '%'
-                on_release: root.btn_percent()
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_percent()            
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: dividing_btn
+                text: '/'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.dividing()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 7_btn
+                text: '7'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_7()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 8_btn
+                text: '8'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_8()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 9_btn
+                text: '9'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_9()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: multiply_btn
+                text: 'x'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.multiply()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 4_btn
+                text: '4'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_4()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 5_btn
+                text: '5'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_5()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 6_btn
+                text: '6'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_6()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: minus_btn
+                text: '-'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.minus()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 1_btn
+                text: '1'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_1()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 2_btn
+                text: '2'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_2()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: 3_btn
+                text: '3'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_3()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: plus_btn
+                text: '+'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.plus()  
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
+            Button:
+                id: symbolic_btn
+                text: '+/-'
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_symbolic()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
             Button:
                 id: zero_btn
                 text: '0'
-                on_release: root.btn_0()
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_0()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
             Button:
                 id: comma_btn
                 text: '.'
-                on_release: root.btn_comma()
+                font_size: 28
+                background_color: [0.52 , 0.52, 0.52, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release: 
+                    root.btn_comma()
+                    self.background_color =[0.52 , 0.52, 0.52, 1]
             Button:
                 id: result_btn
                 text: '='
-                on_release : root.final_result()
+                font_size: 28
+                background_normal: ''
+                background_color : [1, 0.64, 0, 1]
+                on_press: self.background_color =[0,0,1,1]
+                on_release : 
+                    root.final_result()
+                    self.background_color = [1, 0.64, 0, 1]
 <RootWidget>:
     DisplayScreen:
         id: first_screen

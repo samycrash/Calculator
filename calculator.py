@@ -1,7 +1,7 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-
+from kivy.core.window import Window
 
 Builder.load_file("frontend.kv")
 
@@ -41,6 +41,8 @@ class DisplayScreen(Screen):
             else:
                 self.result = self.current_value - (float(value[:-1] ) /100 * self.current_value)
         
+        if float(self.result).is_integer():
+            self.result = int(self.result)
         self.display_number = str(self.result)
         self.ids.result_box.hint_text = self.display_number
         self.current_value = float(self.display_number)
@@ -176,8 +178,9 @@ class DisplayScreen(Screen):
     
     def btn_backSpace(self):
         self.ids.result_box.do_backspace(from_undo=False, mode= 'bkspc')
-        if not self.ids.result_box.text:            
-            self.ids.result_box.text = '0'
+        if not self.ids.result_box.text:
+            if not self.display_number:            
+                self.ids.result_box.text = '0'
             
         
     def btn_symbolic(self):        
@@ -202,14 +205,18 @@ class DisplayScreen(Screen):
     
     def btn_percent(self):
         text_now = self.ids.result_box.text
-        if text_now != 0:
+        if text_now != '0':
             if not '%' in text_now:
                 self.ids.result_box.text += '%'
 
     def btn_AC(self):
-        self.ids.result_box.text = '0'
-        self.display_number =''
-        self.cycle =0
+        self.ids.result_box.text = '0'        
+        self.process = 0
+        self.current_value =0
+        self.result = 0
+        self.display_number = ''
+        self.last_value = 0
+        self.cycle = 0    
         
         
     
@@ -219,6 +226,7 @@ class RootWidget(ScreenManager):
 class myCalculator(App):
 
     def build(self):
+        Window.clearcolor = (0,0,0,1)
         return RootWidget()
     
 
